@@ -6,7 +6,7 @@ var map = new mapboxgl.Map({
   container: 'map', // container id
   style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
   center: [13.404954, 52.520008], // starting position [lng, lat]
-  zoom: 12, // starting zoom
+  zoom: 9, // starting zoom
   minZoom: 9,
   maxZoom: 18,
   pitch: 45, //angle from plane view
@@ -14,7 +14,7 @@ var map = new mapboxgl.Map({
 });
 
 map.on('load', function() {
-  var url = '/data/result.geojson';
+  var url = '/data/preis_ed.geojson';
 
   map.addLayer({
     id: 'datapoints',
@@ -66,7 +66,7 @@ map.on('click', function(e) {
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML('<h3>' + feature.properties['Einrichtung Name'] + '</h3><p>Plätze: ' + feature.properties['Einrichtung Platzzahl'] + '</p>')
+    .setHTML('<h3>' + feature.properties['Aus welcher Behörde bewerben Sie sich für den Berliner Verwaltungspreis?'] + '</h3><p>Kategorie: ' + feature.properties['In welche Kategorie ordnen Sie Ihre Bewerbung ein? '] + '</p>')
     .addTo(map);
 });
 
